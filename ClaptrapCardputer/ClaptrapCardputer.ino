@@ -300,8 +300,8 @@ void updateConnection(uint32_t now) {
   statusLength = 0;
   if (lastConnectAttemptMs != 0 && now - lastConnectAttemptMs < kReconnectIntervalMs) return;
   lastConnectAttemptMs = now;
-  robot.setNoDelay(true);
   if (robot.connect(kRobotHost, kControlPort, 1000)) {
+    robot.setNoDelay(true);
     sendAxes(0, 0);
   }
 }
